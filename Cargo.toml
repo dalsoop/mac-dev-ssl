@@ -27,7 +27,7 @@ regex-lite = "0.1"
 walkdir = "2"
 
 # 내부 공용 크레이트
-rustai-core = { path = "crates/core" }
+mac-dev-ssl-core = { path = "crates/core" }
 
 [profile.release]
 opt-level = 3

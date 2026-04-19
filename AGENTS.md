@@ -30,7 +30,7 @@ git push   → .githooks/pre-push    (cargo check + nickel + shellcheck + test)
 
 **자동** (권장):
 ```bash
-cargo run -p rustai -- scaffold new-domain <name> -d "<설명>"
+cargo run -p mac-dev-ssl -- scaffold new-domain <name> -d "<설명>"
 ```
 구현은 [`crates/core/src/scaffold.rs`](crates/core/src/scaffold.rs)에 있고
 이 코드 자체가 `hardcoded-lint` + 유닛 테스트로 검증됩니다.

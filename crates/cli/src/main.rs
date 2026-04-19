@@ -1,10 +1,10 @@
 use clap::{Parser, Subcommand};
-use rustai_core::scaffold::{self, NewDomainOpts, RenameOpts};
+use mac_dev_ssl_core::scaffold::{self, NewDomainOpts, RenameOpts};
 use std::path::PathBuf;
 use std::process::Command;
 
 #[derive(Parser)]
-#[command(name = "rustai", about = "AI-generate-safe Rust CLI template")]
+#[command(name = "mac-dev-ssl", about = "AI-generate-safe Rust CLI template")]
 struct Cli {
     #[command(subcommand)]
     command: Commands,
@@ -31,16 +31,16 @@ enum ScaffoldCmd {
         name: String,
         #[arg(short, long, default_value = "TODO: write description")]
         description: String,
-        /// crate 이름 prefix (기본: rustai)
-        #[arg(long, default_value = "rustai")]
+        /// crate 이름 prefix (기본: mac-dev-ssl)
+        #[arg(long, default_value = "mac-dev-ssl")]
         prefix: String,
     },
     /// 템플릿 → 실프로젝트 rename (cargo-generate fallback)
     Rename {
         /// 새 프로젝트 이름 (kebab-case)
         new_name: String,
-        /// 이전 prefix (기본: rustai)
-        #[arg(long, default_value = "rustai")]
+        /// 이전 prefix (기본: mac-dev-ssl)
+        #[arg(long, default_value = "mac-dev-ssl")]
         from: String,
         /// 실제 파일 변경. 생략하면 dry-run.
         #[arg(long)]
@@ -52,7 +52,7 @@ fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
     match cli.command {
         Commands::List => {
-            let reg = rustai_core::Registry::load()?;
+            let reg = mac_dev_ssl_core::Registry::load()?;
             if reg.domains.is_empty() {
                 eprintln!("(nickel 미설치 또는 ncl eval 실패 — 폴백 모드)");
             }
@@ -61,12 +61,12 @@ fn main() -> anyhow::Result<()> {
             }
         }
         Commands::Doctor => {
-            let nickel = rustai_core::common::has_cmd("nickel");
+            let nickel = mac_dev_ssl_core::common::has_cmd("nickel");
             println!(
                 "nickel CLI: {}",
                 if nickel { "\u{2713}" } else { "\u{2717} (brew install nickel)" }
             );
-            let reg = rustai_core::Registry::load()?;
+            let reg = mac_dev_ssl_core::Registry::load()?;
             println!("domains loaded: {}", reg.domains.len());
         }
         Commands::Scaffold { cmd } => match cmd {

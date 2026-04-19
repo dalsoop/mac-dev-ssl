@@ -1,10 +1,10 @@
 [package]
-name = "mac-dev-ssl"
+name = "mac-dev-ssl-up"
 version.workspace = true
 edition.workspace = true
 
 [[bin]]
-name = "mac-dev-ssl"
+name = "mac-dev-ssl-up"
 path = "src/main.rs"
 
 [dependencies]

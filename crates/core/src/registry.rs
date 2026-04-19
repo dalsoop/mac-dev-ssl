@@ -46,7 +46,7 @@ impl Registry {
             match Self::load_via_nickel() {
                 Ok(reg) => return Ok(reg),
                 Err(e) => {
-                    eprintln!("[rustai] ⚠ Nickel export 실패 — 폴백 사용: {e}");
+                    eprintln!("[mac-dev-ssl] ⚠ Nickel export 실패 — 폴백 사용: {e}");
                     eprintln!("  (ncl/domains.ncl 점검: `nickel eval ncl/domains.ncl`)");
                 }
             }
@@ -56,7 +56,7 @@ impl Registry {
 
     fn load_via_nickel() -> anyhow::Result<Self> {
         // contract.ncl import를 위해 두 파일을 같은 tmp 디렉토리에 배치
-        let tmp_dir = std::env::temp_dir().join("rustai-ncl");
+        let tmp_dir = std::env::temp_dir().join("mac-dev-ssl-ncl");
         std::fs::create_dir_all(&tmp_dir)?;
         let domains_path = tmp_dir.join("domains.ncl");
         let contract_path = tmp_dir.join("contract.ncl");

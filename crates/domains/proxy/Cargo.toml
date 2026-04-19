@@ -1,15 +1,15 @@
 [package]
-name = "rustai-hello"
+name = "mac-dev-ssl-proxy"
 version.workspace = true
 edition.workspace = true
 
 [[bin]]
-name = "rustai-hello"
+name = "mac-dev-ssl-proxy"
 path = "src/main.rs"
 
 [dependencies]
 clap = { workspace = true }
-rustai-core = { workspace = true }
+mac-dev-ssl-core = { workspace = true }
 anyhow = { workspace = true }
 
 [build-dependencies]

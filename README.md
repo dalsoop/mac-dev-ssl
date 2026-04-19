@@ -29,9 +29,9 @@ git clone git@github.com:<you>/<your-project>.git
 cd <your-project>
 ./install.sh              # 의존성 확인 + git hooksPath 연결
 
-cargo run -p rustai -- list
-cargo run -p rustai-hello -- greet Claude
-cargo run -p rustai-ping  -- once
+cargo run -p mac-dev-ssl -- list
+cargo run -p mac-dev-ssl-hello -- greet Claude
+cargo run -p mac-dev-ssl-ping  -- once
 ```
 
 ## 구조
@@ -44,7 +44,7 @@ cargo run -p rustai-ping  -- once
 │   └── presets.ncl         # 도메인 조합 프리셋
 ├── crates/
 │   ├── core/               # 레지스트리 로더 + hardcoded-lint (build.rs)
-│   ├── cli/                # `rustai` 메인 엔트리
+│   ├── cli/                # `mac-dev-ssl` 메인 엔트리
 │   └── domains/
 │       ├── hello/          # 샘플 도메인
 │       └── ping/           # hello를 requires로 의존
@@ -58,8 +58,8 @@ cargo run -p rustai-ping  -- once
 
 **자동 (권장)** — CLI 서브커맨드:
 ```bash
-cargo run -p rustai -- scaffold new-domain <name> -d "설명"
-# 예: cargo run -p rustai -- scaffold new-domain wave -d "파동 도메인"
+cargo run -p mac-dev-ssl -- scaffold new-domain <name> -d "설명"
+# 예: cargo run -p mac-dev-ssl -- scaffold new-domain wave -d "파동 도메인"
 ```
 내부적으로 스캐폴딩 → `nickel eval` → `cargo check` 순서로 검증하고
 어느 단계든 실패하면 생성 파일 전부 **롤백**합니다.
@@ -88,10 +88,10 @@ Handlebars 변수(`{{project-name}}`, `{{crate_name}}`)로 자동 치환됨.
 **Fallback** (cargo-generate 미설치) — CLI 서브커맨드:
 ```bash
 # dry-run (어느 파일이 바뀔지 미리 보기)
-cargo run -p rustai -- scaffold rename my-app
+cargo run -p mac-dev-ssl -- scaffold rename my-app
 
 # 실제 적용
-cargo run -p rustai -- scaffold rename my-app --apply
+cargo run -p mac-dev-ssl -- scaffold rename my-app --apply
 cargo check --workspace
 ```
 

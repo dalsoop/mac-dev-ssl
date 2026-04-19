@@ -171,6 +171,79 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d26c52dbd32dccf2d10cac7725f8eae5296885fb5703b261f7d0a0739ec807ab"
 
 [[package]]
+name = "mac-dev-ssl"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap",
+ "hardcoded-lint",
+ "mac-dev-ssl-core",
+]
+
+[[package]]
+name = "mac-dev-ssl-apps"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap",
+ "hardcoded-lint",
+ "mac-dev-ssl-core",
+]
+
+[[package]]
+name = "mac-dev-ssl-cert"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap",
+ "hardcoded-lint",
+ "mac-dev-ssl-core",
+]
+
+[[package]]
+name = "mac-dev-ssl-core"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "hardcoded-lint",
+ "regex-lite",
+ "serde",
+ "serde_json",
+ "walkdir",
+ "which",
+]
+
+[[package]]
+name = "mac-dev-ssl-dns"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap",
+ "hardcoded-lint",
+ "mac-dev-ssl-core",
+]
+
+[[package]]
+name = "mac-dev-ssl-proxy"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap",
+ "hardcoded-lint",
+ "mac-dev-ssl-core",
+]
+
+[[package]]
+name = "mac-dev-ssl-up"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap",
+ "hardcoded-lint",
+ "mac-dev-ssl-core",
+]
+
+[[package]]
 name = "memchr"
 version = "2.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -205,49 +278,6 @@ name = "regex-lite"
 version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cab834c73d247e67f4fae452806d17d3c7501756d98c8808d7c9c7aa7d18f973"
-
-[[package]]
-name = "rustai"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "clap",
- "hardcoded-lint",
- "rustai-core",
-]
-
-[[package]]
-name = "rustai-core"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "hardcoded-lint",
- "regex-lite",
- "serde",
- "serde_json",
- "walkdir",
- "which",
-]
-
-[[package]]
-name = "rustai-hello"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "clap",
- "hardcoded-lint",
- "rustai-core",
-]
-
-[[package]]
-name = "rustai-ping"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "clap",
- "hardcoded-lint",
- "rustai-core",
-]
 
 [[package]]
 name = "rustix"

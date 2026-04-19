@@ -15,7 +15,7 @@ use crate::common::{has_cmd, run_capture};
 pub struct NewDomainOpts<'a> {
     pub name: &'a str,
     pub description: &'a str,
-    pub crate_prefix: &'a str, // 예: "rustai"
+    pub crate_prefix: &'a str, // 예: "mac-dev-ssl"
 }
 
 pub fn new_domain(opts: NewDomainOpts<'_>, workspace_root: &Path) -> anyhow::Result<PathBuf> {
@@ -215,7 +215,7 @@ fn rollback(root: &Path, dir: &Path) -> anyhow::Result<()> {
 
 pub struct RenameOpts<'a> {
     pub new_name: &'a str,      // kebab-case
-    pub old_prefix: &'a str,    // 예: "rustai"
+    pub old_prefix: &'a str,    // 예: "mac-dev-ssl"
     pub apply: bool,
 }
 
@@ -315,17 +315,17 @@ mod tests {
 
     #[test]
     fn renders_domain_files() {
-        let cargo = render_domain_cargo_toml("wave", "rustai");
-        assert!(cargo.contains("name = \"rustai-wave\""));
-        assert!(cargo.contains("rustai-core = { workspace = true }"));
+        let cargo = render_domain_cargo_toml("wave", "mac-dev-ssl");
+        assert!(cargo.contains("name = \"mac-dev-ssl-wave\""));
+        assert!(cargo.contains("mac-dev-ssl-core = { workspace = true }"));
 
         let ncl = render_domain_ncl("wave", "파동");
         assert!(ncl.contains("name = \"wave\""));
         assert!(ncl.contains("description = \"파동\""));
         assert!(ncl.contains("| Domain"));
 
-        let main = render_domain_main_rs("wave", "rustai");
-        assert!(main.contains("rustai-wave"));
+        let main = render_domain_main_rs("wave", "mac-dev-ssl");
+        assert!(main.contains("mac-dev-ssl-wave"));
         assert!(main.contains("wave: ok"));
     }
 }

@@ -5,26 +5,26 @@
 
 use std::process::Command;
 
-fn rustai_cmd() -> Command {
-    Command::new(env!("CARGO_BIN_EXE_rustai"))
+fn mac-dev-ssl_cmd() -> Command {
+    Command::new(env!("CARGO_BIN_EXE_mac-dev-ssl"))
 }
 
 #[test]
 fn list_runs_and_exits_zero() {
-    let out = rustai_cmd()
+    let out = mac-dev-ssl_cmd()
         .arg("list")
         .output()
-        .expect("rustai 바이너리 실행 실패");
-    assert!(out.status.success(), "rustai list exit != 0");
+        .expect("mac-dev-ssl 바이너리 실행 실패");
+    assert!(out.status.success(), "mac-dev-ssl list exit != 0");
 }
 
 #[test]
 fn doctor_runs_and_reports_domains() {
-    let out = rustai_cmd()
+    let out = mac-dev-ssl_cmd()
         .arg("doctor")
         .output()
-        .expect("rustai 바이너리 실행 실패");
-    assert!(out.status.success(), "rustai doctor exit != 0");
+        .expect("mac-dev-ssl 바이너리 실행 실패");
+    assert!(out.status.success(), "mac-dev-ssl doctor exit != 0");
     let stdout = String::from_utf8_lossy(&out.stdout);
     assert!(
         stdout.contains("domains loaded:"),
@@ -34,8 +34,8 @@ fn doctor_runs_and_reports_domains() {
 
 #[test]
 fn hello_greets_named_target() {
-    let bin = env!("CARGO_BIN_EXE_rustai");
-    let hello = bin.replace("rustai", "rustai-hello");
+    let bin = env!("CARGO_BIN_EXE_mac-dev-ssl");
+    let hello = bin.replace("mac-dev-ssl", "mac-dev-ssl-hello");
     if !std::path::Path::new(&hello).exists() {
         // hello 도메인이 제거된 템플릿 파생본에서는 조용히 skip.
         return;
@@ -43,7 +43,7 @@ fn hello_greets_named_target() {
     let out = Command::new(&hello)
         .args(["greet", "Claude"])
         .output()
-        .expect("rustai-hello 실행 실패");
+        .expect("mac-dev-ssl-hello 실행 실패");
     assert!(out.status.success());
     let stdout = String::from_utf8_lossy(&out.stdout);
     assert!(
